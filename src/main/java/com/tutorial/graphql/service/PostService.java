@@ -12,13 +12,13 @@ import java.util.UUID;
 public class PostService {
     Map<String, PostRecord> posts = new HashMap<>();
 
-    Collection<PostRecord> createPosts(String content){
+   public Collection<PostRecord> createPosts(String content){
         var newPost = new PostRecord(UUID.randomUUID().toString(), content);
         posts.put(newPost.id(), newPost);
         return posts.values();
     }
 
-    PostRecord postById(String id){
+    public PostRecord postById(String id){
         return posts.get(id);
     }
 }

@@ -13,13 +13,19 @@ public class CommentService {
 
     Map<String, CommentRecord> comments = new HashMap<>();
 
-    Collection<CommentRecord> createPosts(String content, String postId){
+    public Collection<CommentRecord> createPosts(String content, String postId){
         var newComment = new CommentRecord(UUID.randomUUID().toString(), content, postId);
         comments.put(newComment.id(), newComment);
         return comments.values();
     }
 
-    CommentRecord commentById(String id){
+    public CommentRecord commentById(String id){
         return comments.get(id);
+    }
+
+    public Collection<CommentRecord> findByPost(String id) {
+        return comments.values().stream().filter(commentRecord ->
+                commentRecord.postId()
+                        .equals(id)).toList();
     }
 }
