@@ -3,10 +3,7 @@ package com.tutorial.graphql.service;
 import com.tutorial.graphql.records.CommentRecord;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class CommentService {
@@ -23,7 +20,7 @@ public class CommentService {
         return comments.get(id);
     }
 
-    public Collection<CommentRecord> findByPost(String id) {
+    public List<CommentRecord> findByPost(String id) {
         return comments.values().stream().filter(commentRecord ->
                 commentRecord.postId()
                         .equals(id)).toList();

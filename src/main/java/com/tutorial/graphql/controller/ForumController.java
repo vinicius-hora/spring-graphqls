@@ -12,6 +12,7 @@ import org.springframework.graphql.data.method.annotation.SchemaMapping;
 import org.springframework.stereotype.Controller;
 
 import java.util.Collection;
+import java.util.List;
 
 @Controller
 public class ForumController {
@@ -35,7 +36,7 @@ public class ForumController {
     }
 
     @SchemaMapping
-    public Collection<CommentRecord> comments(PostRecord post){
+    public List<CommentRecord> comments(PostRecord post){
         System.out.println("Comments");
         return commentService.findByPost(post.id());
     }
